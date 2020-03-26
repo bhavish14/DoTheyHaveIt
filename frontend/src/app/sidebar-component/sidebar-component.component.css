@@ -1,0 +1,45 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #1a1a1d;
+  height: 100vh;
+  color: white;
+}
+
+.header {
+  margin-top: 20px;
+  font-size: 28px;
+  font-family: 'Permanent Marker', cursive;
+  display: flex;
+  justify-content: center;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
+.recent-search-block {
+  margin-top: 100px;
+  height: 200px;
+}
+
+.block-header {
+  text-align: center;
+}
+
+.content {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.content span {
+  margin: 5px;
+  justify-content: center;
+  display: flex;
+}

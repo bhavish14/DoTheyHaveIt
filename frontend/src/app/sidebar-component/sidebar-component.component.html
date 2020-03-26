@@ -1,0 +1,20 @@
+<div class="container">
+  <!-- website name block -->
+  <div class="header">
+    <a [routerLink]="['/home']">
+      Do they have it?
+    </a>
+  </div>
+
+  <!-- recent searches block -->
+  <div class="recent-search-block">
+    <div class="block-header">
+      Recent searches by you
+    </div>
+    <div class="content">
+      <span class="search-item" *ngFor="let item of allSearchItems">
+        {{ item[0] + ' on ' + item[1] }}
+      </span>
+    </div>
+  </div>
+</div>

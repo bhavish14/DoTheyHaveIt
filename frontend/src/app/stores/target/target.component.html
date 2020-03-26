@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="header">
+    <div class="header-image">
+      <img src="/assets/images/target-corp.png" />
+      <span class="header-text">Target</span>
+    </div>
+    <div class="back-btn-block" (click)="goBack()">
+      <mat-icon>reply</mat-icon>
+      go back
+    </div>
+  </div>
+  <div class="content">
+    <div *ngFor="let product of allProducts; let i = index">
+      <mat-card>
+        <mat-card-content>
+          <div class="image">
+            <img src="{{ product.image_url }}" />
+          </div>
+          <div class="product-details">
+            <span class="title">
+              {{ product.title }}
+            </span>
+            <div class="row">
+              <span class="price">
+                <mat-icon>attach_money</mat-icon>
+                {{ product.price }}
+              </span>
+              <span class="rating">
+                {{ product.rating }}
+              </span>
+            </div>
+          </div>
+          <div class="locations">
+            <div class="header">
+              Stores near you
+            </div>
+            <div class="out-of-stock" *ngIf="product.out_of_stock">
+              uh-oh! product out of stock at this location
+            </div>
+            <div
+              class="store"
+              *ngFor="let store of product.locations; let j = index"
+            >
+              <div>
+                <div class="row">
+                  <span class="store-distance">
+                    <mat-icon>location_on</mat-icon>
+                    {{ store.distance | number }}{{ ' mi' }}
+                  </span>
+                  <span
+                    class="store-name"
+                    [outerHTML]="store.store_name"
+                  ></span>
+                  <span class="store-timings">
+                    {{ store.begin_time + ' - ' + store.end_time }}
+                  </span>
+                </div>
+                <div class="store-stock">{{ store.stock }} items in stock</div>
+                <hr />
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

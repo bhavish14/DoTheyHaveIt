@@ -1,0 +1,47 @@
+{
+  "name": "dothyhaveit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run nodemon",
+    "dev": "cross-env NODE_ENV=development node app.js",
+    "nodemon": "nodemon --exec npm run dev"
+  },
+  "author": "bhavish narayanan <bhavish.n96@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "core-js": "^2.6.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-routes-mapper": "^1.1.0",
+    "express-session": "^1.17.0",
+    "express-validator": "^6.4.0",
+    "hammerjs": "^2.0.8",
+    "helmet": "^3.21.3",
+    "logger": "0.0.1",
+    "request": "^2.88.2",
+    "request-cookies": "^1.1.0",
+    "request-promise": "^4.2.5",
+    "response-time": "^2.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^13.9.3",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.8.1",
+    "typescript": "^3.8.3"
+  }
+}

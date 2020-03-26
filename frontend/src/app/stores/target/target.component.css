@@ -1,0 +1,167 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 20px 10px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-image {
+  margin-left: 20px;
+}
+.header-image img {
+  height: 50px;
+  width: 50px;
+}
+
+.header-text {
+  margin-left: 20px;
+  font-size: 24px;
+}
+
+.back-btn-block {
+  display: flex;
+  cursor: pointer;
+}
+
+.back-btn-block .mat-icon {
+  margin-right: 10px;
+}
+
+.content {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.content .mat-card {
+  width: 300px;
+  min-height: 250px;
+  margin: 10px;
+}
+
+.content .image {
+  margin-bottom: 20px;
+  justify-content: center;
+  display: flex;
+}
+
+.content img {
+  width: 100px;
+  height: 100px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.product-details .row {
+  margin: 0px !important;
+  justify-content: space-between;
+}
+
+.price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.price .mat-icon {
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+  margin-left: 5px;
+}
+
+.locations {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  overflow: hidden;
+}
+.locations .header {
+  margin: 10px 0px;
+}
+.store {
+  display: flex;
+  flex-direction: column;
+}
+
+.store hr {
+  width: 100%;
+  margin: 2px !important;
+}
+
+.out-of-stock {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  background: #b34744;
+  justify-content: center;
+}
+.store .row {
+  display: flex;
+  flex-direction: row;
+  margin: 0px !important;
+  justify-content: space-between;
+}
+
+.store .mat-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.store-distance {
+  width: 80px;
+  display: flex;
+  align-items: baseline;
+}
+
+.store-name {
+  width: 130px;
+}
+
+.store-timings {
+  width: 50px;
+  justify-content: flex-end;
+  display: flex;
+}
+
+.store-stock {
+  justify-content: flex-end;
+  display: flex;
+  font-size: 12px;
+}
+
+.card-columns {
+  column-count: 3;
+}
+
+@media only screen and (max-width: 640px) {
+  .container {
+    margin: 0px;
+  }
+
+  .header {
+    margin-top: 10px;
+  }
+  .header-image {
+    margin-left: 0px;
+  }
+}
+@media only screen and (max-width: 1007px) {
+}
+@media only screen and (min-width: 1008px) {
+}

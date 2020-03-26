@@ -1,0 +1,13 @@
+<div class="container-fluid outer">
+  <div class="left-pane" *ngIf="!mobileQuery.matches">
+    <app-sidebar-component></app-sidebar-component>
+  </div>
+  <div [ngClass]="{ 'right-pane': !mobileQuery.matches }">
+    <div *ngIf="router.url.startsWith('/home')">
+      <app-homepage-component></app-homepage-component>
+    </div>
+    <div *ngIf="router.url.startsWith('/search')">
+      <app-product-listing-component></app-product-listing-component>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,162 @@
+.container-box {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+}
+
+.header {
+  font-size: 32px;
+  font-family: 'Permanent Marker', cursive;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.text-block {
+  width: 800px;
+  margin-top: 50px;
+  font-size: 18px;
+}
+
+.query-block {
+  margin-top: 100px;
+  width: 700px;
+  justify-content: center;
+  display: flex;
+  height: 200px;
+}
+
+.query-block .mat-card {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  padding: 0px;
+  height: 150px;
+}
+
+.query-block .row {
+  justify-content: center;
+  align-items: baseline;
+}
+
+.query-block .mat-form-field {
+  width: 400px;
+}
+
+.query-block .mat-form-field input {
+  width: 100%;
+  height: 25px;
+}
+
+.miles-block {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 150px;
+  margin: 0px 10px;
+}
+
+.miles-block .mat-form-field {
+  width: 75px;
+}
+.miles-block .mat-form-field input {
+  width: 100%;
+  height: 15px;
+}
+
+.miles-block span {
+  margin: 0px 10px;
+}
+
+.postal-code-block {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 150px;
+  margin: 0px 25px;
+}
+
+.postal-code-block span {
+  margin: 0px 10px;
+}
+
+.postal-code-block .mat-form-field {
+  width: 100px;
+}
+.postal-code-block .mat-form-field input {
+  width: 100%;
+  height: 15px;
+}
+
+.action-row {
+  margin-left: 20px;
+}
+
+.action-row button {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  color: #fff;
+  background: #e36861;
+  border: 0 solid silver;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.action-row img {
+  height: 20px;
+  width: 20px;
+}
+
+@media only screen and (max-width: 800px) {
+  .header {
+    width: 80vw;
+    max-width: 600px;
+    font-size: 20px;
+  }
+  .text-block {
+    width: 80vw;
+    max-width: 600px;
+    font-size: 16px;
+  }
+  .query-block {
+    width: 80vw;
+    max-width: 600px;
+  }
+
+  .query-block .mat-card {
+    height: 250px;
+    align-items: center;
+  }
+
+  .query-block .row {
+    margin: 1 !important;
+    width: 75vw;
+  }
+
+  .query-block .mat-form-field {
+    width: 60vw;
+    max-width: 400px;
+  }
+
+  .miles-block {
+    width: 40vw;
+    margin: 0px;
+    max-width: 150px;
+  }
+  .miles-block .mat-form-field {
+    width: 20vw;
+    max-width: 75px;
+  }
+
+  .postal-code-block {
+    width: 40vw;
+    max-width: 150px;
+    margin: 0px;
+  }
+
+  .postal-code-block .mat-form-field {
+    width: 20vw;
+    max-width: 75px;
+  }
+}
