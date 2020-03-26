@@ -74,43 +74,43 @@ export class TargetComponent implements OnInit {
 
               forkJoin(productsCall).subscribe(res => {
                 res.map((e: any) => {
-                  let productId = e.data.product_id;
-                  let data = e.data.locations;
-                  let thisProduct = products.filter(
-                    e => e.tcin == productId,
-                  )[0];
-                  let productObject = {
-                    title: thisProduct.title,
-                    price: thisProduct.price,
-                    image_url: thisProduct.image_url,
-                    rating: thisProduct.average_rating,
-                    locations: [],
-                    out_of_stock: true,
-                  };
+                  if (e.data) {
+                    let productId = e.data.product_id;
+                    let data = e.data.locations;
+                    let thisProduct = products.filter(
+                      e => e.tcin == productId,
+                    )[0];
+                    let productObject = {
+                      title: thisProduct.title,
+                      price: thisProduct.price,
+                      image_url: thisProduct.image_url,
+                      rating: thisProduct.average_rating,
+                      locations: [],
+                      out_of_stock: true,
+                    };
 
-                  data = data.map(store => {
-                    let storeID = store.location_id;
-                    let thisStore = stores.filter(e => e.store_id == storeID);
-                    if (store.location_available_to_promise_quantity > 0) {
-                      productObject.out_of_stock = false;
-                      productObject.locations.push({
-                        distance: store.distance,
-                        store_address: store.store_address,
-                        store_name: store.store_name,
-                        stock: store.location_available_to_promise_quantity,
-                        begin_time: thisStore[0]?.begin_time.substring(0, 2),
-                        end_time: thisStore[0]?.end_time.substring(0, 2),
-                      });
-                    }
-
+                    data = data.map(store => {
+                      let storeID = store.location_id;
+                      let thisStore = stores.filter(e => e.store_id == storeID);
+                      if (store.location_available_to_promise_quantity > 0) {
+                        productObject.out_of_stock = false;
+                        productObject.locations.push({
+                          distance: store.distance,
+                          store_address: store.store_address,
+                          store_name: store.store_name,
+                          stock: store.location_available_to_promise_quantity,
+                          begin_time: thisStore[0]?.begin_time.substring(0, 2),
+                          end_time: thisStore[0]?.end_time.substring(0, 2),
+                        });
+                      }
+                      return store;
+                    });
                     productObject.locations = productObject.locations.slice(
                       0,
                       3,
                     );
-                    return store;
-                  });
-
-                  this.allProducts.push(productObject);
+                    this.allProducts.push(productObject);
+                  }
                   return e;
                 });
               });

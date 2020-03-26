@@ -98,7 +98,7 @@
   height: 40px;
   border-radius: 100px;
   color: #fff;
-  background: #e36861;
+  background: #6183e3;
   border: 0 solid silver;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 }
@@ -106,6 +106,31 @@
 .action-row img {
   height: 20px;
   width: 20px;
+}
+
+.additional-info-block {
+  margin-top: 50px;
+  width: 700px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.additional-info-block .mat-card {
+  width: 400px;
+  padding: 10px !important;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.additional-info-block img {
+  width: 100px;
+}
+
+.additional-info-block .content {
+  margin-left: 30px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -158,5 +183,11 @@
   .postal-code-block .mat-form-field {
     width: 20vw;
     max-width: 75px;
+  }
+
+  .additional-info-block {
+    width: 80vw;
+    max-width: 600px;
+    flex-direction: column;
   }
 }
