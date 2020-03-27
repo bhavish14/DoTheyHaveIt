@@ -1,7 +1,5 @@
-const https = require('https');
 const request = require('request');
 const rp = require('request-promise');
-var Cookie = require('request-cookies').Cookie;
 
 const TargetController = () => {
   /**
@@ -27,7 +25,6 @@ const TargetController = () => {
         success: true,
         data: {
           redsky_key: await visitorIDPromise,
-          api_key: process.env.TGT_API_KEY,
         },
       });
     } catch (err) {

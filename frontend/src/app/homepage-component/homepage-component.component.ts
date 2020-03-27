@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { TargetService } from 'src/app/_services/target.service';
 
+// services
+import { UtilService } from 'src/app/_services/util.service';
+
 @Component({
   selector: 'app-homepage-component',
   templateUrl: './homepage-component.component.html',
@@ -17,11 +20,13 @@ export class HomepageComponentComponent implements OnInit {
   showPostalCode: boolean = false;
   disable: boolean = false;
 
+  private gcsAPI: string = null;
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private targetService: TargetService,
     private http: HttpClient,
+    private utilService: UtilService,
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +40,12 @@ export class HomepageComponentComponent implements OnInit {
     });
 
     this.targetService.getAPIKey();
+    this.utilService
+      .getGCSKey()
+      .pipe()
+      .subscribe(res => {
+        this.gcsAPI = res.data;
+      });
   }
 
   submit(): void {
@@ -62,11 +73,7 @@ export class HomepageComponentComponent implements OnInit {
         pos => {
           this.http
             .get(
-              'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyC69VLLEsQMX4LEhmccHWVdqm68Ucl-bMk&latlng=' +
-                pos.coords.latitude +
-                ',' +
-                pos.coords.longitude +
-                '&sensor=true',
+              `https://maps.googleapis.com/maps/api/geocode/json?key=${this.gcsAPI}&latlng=${pos.coords.latitude},${pos.coords.longitude}&sensor=true`,
             )
             .subscribe((res: any) => {
               if (res.status === 'OK') {
@@ -75,6 +82,10 @@ export class HomepageComponentComponent implements OnInit {
                   address = address.filter(e => e.types[0] === 'postal_code');
                   resolve(Number(address[0].long_name));
                 }
+              } else {
+                this.showPostalCode = true;
+                reject(0);
+                console.log('GCS Key Error!');
               }
             });
         },
@@ -87,19 +98,17 @@ export class HomepageComponentComponent implements OnInit {
       );
     });
 
-    postalCodePromise
-      .then(res => {
-        this.disable = false;
-        console.log(res);
-        this.router.navigate(['/search'], {
-          queryParams: {
-            query: searchQuery,
-            postal_code: res,
-            mile_range: 25,
-          },
-        });
-      })
-      .catch(err => {});
+    postalCodePromise.then(res => {
+      this.disable = false;
+      console.log(res);
+      this.router.navigate(['/search'], {
+        queryParams: {
+          query: searchQuery,
+          postal_code: res,
+          mile_range: 25,
+        },
+      });
+    });
   }
 
   postalCodeSubmit(): void {
