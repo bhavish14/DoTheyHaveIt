@@ -18,6 +18,7 @@
 .header-image img {
   height: 50px;
   width: 50px;
+  border-radius: 50%;
 }
 
 .header-text {
@@ -34,12 +35,28 @@
   margin-right: 10px;
 }
 
+.fun-stuff {
+  margin: 10px 10px;
+}
+
+.fun-stuff .mat-card {
+  padding: 10px;
+  color: white;
+  text-align: center;
+}
+
 .content {
-  margin-top: 50px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.content .text {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .content .mat-card {
@@ -83,15 +100,38 @@
   margin-left: 5px;
 }
 
+.rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.rating .mat-icon {
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+  margin-right: 5px;
+}
+
+.gold {
+  color: gold;
+}
+
+.red {
+  color: red;
+}
+
 .locations {
   display: flex;
   flex-direction: column;
   height: 200px;
   overflow: hidden;
 }
+
 .locations .header {
   margin: 10px 0px;
 }
+
 .store {
   display: flex;
   flex-direction: column;
@@ -147,6 +187,10 @@
 
 .card-columns {
   column-count: 3;
+}
+
+.color-3 {
+  background: #5c9b9d;
 }
 
 @media only screen and (max-width: 640px) {

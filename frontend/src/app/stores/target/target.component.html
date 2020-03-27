@@ -9,7 +9,13 @@
       go back
     </div>
   </div>
-  <div class="content">
+  <div class="fun-stuff">
+    <mat-card class="color-3">
+      Hey you! Please don't be that guy we all read about in math textbooks. No!
+      No one can possibly eat 50 dozens of bananas.
+    </mat-card>
+  </div>
+  <div class="content" *ngIf="loaded">
     <div *ngFor="let product of allProducts; let i = index">
       <mat-card>
         <mat-card-content>
@@ -25,7 +31,17 @@
                 <mat-icon>attach_money</mat-icon>
                 {{ product.price }}
               </span>
+              <span class="view-item">
+                <a target="_blank" href="{{ product.url }}">view item</a>
+              </span>
               <span class="rating">
+                <mat-icon
+                  [ngClass]="{
+                    gold: product.rating > 4,
+                    red: product.rating < 2
+                  }"
+                  >grade</mat-icon
+                >
                 {{ product.rating }}
               </span>
             </div>
@@ -47,10 +63,7 @@
                     <mat-icon>location_on</mat-icon>
                     {{ store.distance | number }}{{ ' mi' }}
                   </span>
-                  <span
-                    class="store-name"
-                    [outerHTML]="store.store_name"
-                  ></span>
+                  <span class="store-name">{{ store.store_name }}</span>
                   <span class="store-timings">
                     {{ store.begin_time + ' - ' + store.end_time }}
                   </span>
@@ -62,6 +75,23 @@
           </div>
         </mat-card-content>
       </mat-card>
+    </div>
+  </div>
+  <div class="content" *ngIf="!loaded">
+    <div class="text">
+      <span style="text-align: center;">
+        Beep-Beep-Boop-Bop
+      </span>
+      <span *ngIf="!errorMsg" style="text-align: center;">
+        Hang in there! our servers are working hard crunching those results for
+        ya!
+      </span>
+      <span style="text-align: center;" *ngIf="!errorMsg">
+        <img src="/assets/gifs/loading.gif" />
+      </span>
+      <span *ngIf="errorMsg" style="text-align: center;">
+        {{ errorMsg }}
+      </span>
     </div>
   </div>
 </div>

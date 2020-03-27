@@ -19,76 +19,98 @@
 
   <!-- query block -->
   <div class="query-block">
-    <mat-card>
-      <form [formGroup]="searchForm">
-        <div class="row">
-          <mat-form-field>
-            <input
-              matInput
-              #query
-              placeholder="Search"
-              formControlName="searchQuery"
-            />
-            <mat-hint align="start"
-              ><strong>Peanut butter, anyone?</strong>
-            </mat-hint>
-          </mat-form-field>
-          <div class="action-row">
-            <button (click)="submit()">
-              <img src="/assets/images/search-icon.png" />
-            </button>
-          </div>
+    <form [formGroup]="searchForm">
+      <div class="row">
+        <mat-form-field>
+          <input
+            matInput
+            #query
+            placeholder="Search"
+            formControlName="searchQuery"
+          />
+          <mat-hint align="start"
+            ><strong>Peanut butter, anyone?</strong>
+          </mat-hint>
+        </mat-form-field>
+        <div class="action-row">
+          <button
+            (click)="submit()"
+            *ngIf="!showPostalCode"
+            [disabled]="disable || searchForm.invalid"
+          >
+            <img src="/assets/images/search-icon.png" />
+          </button>
+          <button
+            (click)="postalCodeSubmit()"
+            *ngIf="showPostalCode"
+            [disabled]="postalCodeForm.invalid"
+          >
+            <img src="/assets/images/search-icon.png" />
+          </button>
         </div>
-        <div class="row">
-          <div class="miles-block">
-            <span>within</span>
-            <mat-form-field>
-              <input
-                matInput
-                #query
-                placeholder="distance"
-                formControlName="mileRange"
-              />
-            </mat-form-field>
-            <span>miles</span>
-          </div>
-          <div class="postal-code-block">
-            <span>of</span>
-            <mat-form-field>
-              <input
-                matInput
-                #query
-                placeholder="postal code"
-                formControlName="postalCode"
-                maxlength="5"
-              />
-            </mat-form-field>
-          </div>
-        </div>
-      </form>
-    </mat-card>
+      </div>
+    </form>
+    <form [formGroup]="postalCodeForm" class="row" *ngIf="showPostalCode">
+      <div class="miles-block">
+        <span>within</span>
+        <mat-form-field>
+          <input
+            matInput
+            #query
+            placeholder="distance"
+            formControlName="mileRange"
+          />
+        </mat-form-field>
+        <span>miles</span>
+      </div>
+      <div class="postal-code-block">
+        <span>of</span>
+        <mat-form-field>
+          <input
+            matInput
+            #query
+            placeholder="postal code"
+            formControlName="postalCode"
+            maxlength="5"
+          />
+        </mat-form-field>
+      </div>
+    </form>
   </div>
 
   <!-- additional cards block -->
   <div class="additional-info-block">
-    <mat-card>
-      <div class="image">
-        <img src="/assets/images/grocery-shopping.jpg" />
-      </div>
-      <div class="content">
-        With this, you can check for stocks before you head to the store. Social
-        distancing is how you beat the pandemic.
-      </div>
-    </mat-card>
-    <mat-card>
-      <div class="image">
-        <img src="/assets/images/grocery-shopping.jpg" />
-      </div>
-      <div class="content">
-        Track stock in real time
-      </div>
-    </mat-card>
-    <mat-card></mat-card>
-    <mat-card></mat-card>
+    <div class="header">
+      Why use do they have it?
+    </div>
+    <div class="cards-block">
+      <mat-card class=" color-1">
+        <div class="card-b">
+          <div class="header">
+            Help flattern the curve!
+          </div>
+          <div class="content">
+            check if an item is available even before heading to the store.
+            Social distancing is the key!
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="color-2">
+        <div class="card-b">
+          <div class="header">
+            Inventory updates in near real time
+          </div>
+          <div class="content">
+            <span>
+              Beep! Beep! Boop! Bop!
+            </span>
+            <span>
+              Our robots are working around the clock to give you an accurate
+              inventory.
+            </span>
+          </div>
+        </div>
+      </mat-card>
+    </div>
   </div>
 </div>

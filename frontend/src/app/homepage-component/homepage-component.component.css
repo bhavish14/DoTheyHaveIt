@@ -24,6 +24,7 @@
   width: 700px;
   justify-content: center;
   display: flex;
+  flex-direction: column;
   height: 200px;
 }
 
@@ -109,35 +110,75 @@
 }
 
 .additional-info-block {
-  margin-top: 50px;
-  width: 700px;
+  width: 1000px;
+  justify-content: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+}
+
+.additional-info-block .content {
+  margin: 5px 15px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-size: 14px;
+}
+
+.additional-info-block .header {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.additional-info-block .cards-block {
   flex-wrap: wrap;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
 }
 
 .additional-info-block .mat-card {
-  width: 400px;
+  width: 200px;
   padding: 10px !important;
   margin: 10px;
   display: flex;
   flex-direction: row;
+  border-radius: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.additional-info-block img {
-  width: 100px;
+.card-b {
+  color: white;
 }
 
-.additional-info-block .content {
-  margin-left: 30px;
+.card-b .header {
+  margin: 5px 15px;
+  font-size: 16px;
+}
+
+.card-b .content {
+  margin: 5px 15px;
+}
+.additional-info-block img {
+  width: 50px;
+}
+
+.color-1 {
+  background-color: #645186;
+}
+
+.color-2 {
+  background: #de8171;
+}
+
+.color-3 {
+  background: #5c9b9d;
 }
 
 @media only screen and (max-width: 800px) {
   .header {
     width: 80vw;
     max-width: 600px;
-    font-size: 20px;
+    font-size: 22px;
   }
   .text-block {
     width: 80vw;
@@ -160,7 +201,7 @@
   }
 
   .query-block .mat-form-field {
-    width: 60vw;
+    width: 55vw;
     max-width: 400px;
   }
 
@@ -177,7 +218,7 @@
   .postal-code-block {
     width: 40vw;
     max-width: 150px;
-    margin: 0px;
+    margin-left: 40px;
   }
 
   .postal-code-block .mat-form-field {
@@ -189,5 +230,22 @@
     width: 80vw;
     max-width: 600px;
     flex-direction: column;
+    align-items: center;
+  }
+
+  .additional-info-block .header {
+    font-size: 20px;
+    width: 100%;
+  }
+
+  .additional-info-block .mat-card {
+    width: 80vw;
+    max-width: 400px;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 }

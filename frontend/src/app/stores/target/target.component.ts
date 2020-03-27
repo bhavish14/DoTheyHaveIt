@@ -16,6 +16,8 @@ export class TargetComponent implements OnInit {
   @Input() searchQuery: string = null;
 
   allProducts: Object[] = [];
+  loaded: boolean = false;
+  errorMsg: string = null;
 
   constructor(private targetService: TargetService, private router: Router) {}
 
@@ -48,80 +50,101 @@ export class TargetComponent implements OnInit {
           this.targetService
             .getProducts(pricingStoreId, this.searchQuery)
             .pipe()
-            .subscribe(products_object => {
-              let productsCall = [];
-              let productIds = [];
-              let products = products_object.search_response.items.Item;
-              products = products.map(e => {
-                productIds.push(e.tcin);
-                return {
-                  title: e.title,
-                  tcin: e.tcin,
-                  price: e.price.current_retail,
-                  description: e.description,
-                  image_url: `${e.images[0].base_url}${e.images[0].primary}`,
-                  average_rating: e.average_rating,
-                };
-              });
+            .subscribe(
+              products_object => {
+                let productsCall = [];
+                let productIds = [];
 
-              productIds.forEach(e => {
-                productsCall.push(
-                  this.targetService
-                    .getProductStocks(e, this.mileRange, this.postalCode)
-                    .pipe(catchError(err => of(err.status))),
-                );
-              });
-
-              forkJoin(productsCall).subscribe(res => {
-                res.map((e: any) => {
-                  if (e.data) {
-                    let productId = e.data.product_id;
-                    let data = e.data.locations;
-                    let thisProduct = products.filter(
-                      e => e.tcin == productId,
-                    )[0];
-                    let productObject = {
-                      title: thisProduct.title,
-                      price: thisProduct.price,
-                      image_url: thisProduct.image_url,
-                      rating: thisProduct.average_rating,
-                      locations: [],
-                      out_of_stock: true,
+                if (products_object.search_response.items) {
+                  let products = products_object.search_response.items.Item;
+                  products = products.map(e => {
+                    productIds.push(e.tcin);
+                    return {
+                      title: e.title,
+                      tcin: e.tcin,
+                      price: e.price.current_retail,
+                      description: e.description,
+                      image_url: `${e.images[0].base_url}${e.images[0].primary}`,
+                      average_rating: e.average_rating,
+                      url: `https://www.target.com${e.url}`,
                     };
+                  });
 
-                    data = data.map(store => {
-                      let storeID = store.location_id;
-                      let thisStore = stores.filter(e => e.store_id == storeID);
-                      if (store.location_available_to_promise_quantity > 0) {
-                        productObject.out_of_stock = false;
-                        productObject.locations.push({
-                          distance: store.distance,
-                          store_address: store.store_address,
-                          store_name: store.store_name,
-                          stock: store.location_available_to_promise_quantity,
-                          begin_time: thisStore[0]?.begin_time.substring(0, 2),
-                          end_time: thisStore[0]?.end_time.substring(0, 2),
-                        });
-                      }
-                      return store;
-                    });
-                    productObject.locations = productObject.locations.slice(
-                      0,
-                      3,
+                  productIds.forEach(e => {
+                    productsCall.push(
+                      this.targetService
+                        .getProductStocks(e, this.mileRange, this.postalCode)
+                        .pipe(catchError(err => of(err.status))),
                     );
-                    this.allProducts.push(productObject);
-                  }
-                  return e;
-                });
-              });
-            });
+                  });
+
+                  forkJoin(productsCall).subscribe(res => {
+                    res.map((e: any) => {
+                      if (e.data) {
+                        let productId = e.data.product_id;
+                        let data = e.data.locations;
+                        let thisProduct = products.filter(
+                          e => e.tcin == productId,
+                        )[0];
+                        let productObject = {
+                          title: thisProduct.title,
+                          price: thisProduct.price,
+                          image_url: thisProduct.image_url,
+                          rating: thisProduct.average_rating,
+                          locations: [],
+                          out_of_stock: true,
+                          url: thisProduct.url,
+                        };
+
+                        data = data.map(store => {
+                          let storeID = store.location_id;
+                          let thisStore = stores.filter(
+                            e => e.store_id == storeID,
+                          );
+                          if (
+                            store.location_available_to_promise_quantity > 0
+                          ) {
+                            productObject.out_of_stock = false;
+                            productObject.locations.push({
+                              distance: store.distance,
+                              store_address: store.store_address,
+                              store_name: store.store_name,
+                              stock:
+                                store.location_available_to_promise_quantity,
+                              begin_time: thisStore[0]?.begin_time.substring(
+                                0,
+                                2,
+                              ),
+                              end_time: thisStore[0]?.end_time.substring(0, 2),
+                            });
+                          }
+                          return store;
+                        });
+                        productObject.locations = productObject.locations.slice(
+                          0,
+                          3,
+                        );
+                        this.allProducts.push(productObject);
+                        this.loaded = true;
+                      }
+                      return e;
+                    });
+                  });
+                } else {
+                  this.errorMsg = 'Uh-oh! No products found';
+                }
+              },
+              err => {},
+            );
         } else {
           console.log('no stores found nearby');
+          this.errorMsg = 'Uh-oh! No stores found nearby';
         }
       });
   }
 
   goBack(): void {
+    this.errorMsg = null;
     this.router.navigate(['/home']);
   }
 }
