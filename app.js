@@ -58,6 +58,12 @@ app.use(
 
 app.use('/api', mappedRoutes);
 
+app.use(express.static(path.join(__dirname, 'dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist/index.html'));
+});
+
 server.listen(process.env.PORT, () => {
   console.log(`Server is running in http://localhost:${process.env.PORT}`);
 });
