@@ -27,6 +27,14 @@
   font-size: 24px;
 }
 
+.header-warning {
+  margin-left: 30px;
+  font-size: 14px;
+  background: #b34744;
+  color: white;
+  padding: 5px 10px;
+}
+
 .back-btn-block {
   display: flex;
   cursor: pointer;
@@ -34,16 +42,6 @@
 
 .back-btn-block .mat-icon {
   margin-right: 10px;
-}
-
-.fun-stuff {
-  margin: 10px 10px;
-}
-
-.fun-stuff .mat-card {
-  padding: 10px;
-  color: white;
-  text-align: center;
 }
 
 .content {
@@ -148,15 +146,15 @@
   /* align-content: center; */
   background: #b34744;
   color: white;
-  padding: 5px 10px;
   justify-content: center;
+  padding: 5px 10px;
 }
 
 .store .row {
   display: flex;
   flex-direction: row;
   margin: 0px !important;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .store .mat-icon {
@@ -190,6 +188,10 @@
 
 .card-columns {
   column-count: 3;
+}
+
+.color-3 {
+  background: #5c9b9d;
 }
 
 .products {
@@ -242,6 +244,12 @@
 
   .header-image {
     margin-left: 0px;
+  }
+
+
+  .header-warning {
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 }
 

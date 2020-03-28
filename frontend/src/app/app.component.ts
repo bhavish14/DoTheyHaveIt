@@ -26,9 +26,10 @@ export class AppComponent {
     this.mobileQuery = media.matchMedia('(max-width: 1024px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQuery.matches
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   // Listener for viewport changes
   private _mobileQueryListener: () => void;

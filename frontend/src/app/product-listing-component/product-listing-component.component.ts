@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 // services
 import { TargetService } from 'src/app/_services/target.service';
@@ -10,12 +10,17 @@ import { TargetService } from 'src/app/_services/target.service';
   styleUrls: ['./product-listing-component.component.css'],
 })
 export class ProductListingComponentComponent implements OnInit {
+
+  @ViewChild('target', { read: ElementRef }) targetDiv: ElementRef;
+  @ViewChild('walmart', { read: ElementRef }) walmartDiv: ElementRef;
+
   mileRange: number = 50;
   postalCode: number = null;
   searchQuery: string = null;
   allProducts: Object[] = [];
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private targetservice: TargetService,
   ) {
@@ -30,5 +35,17 @@ export class ProductListingComponentComponent implements OnInit {
     this.searchQuery = this.route.snapshot.queryParamMap.get('query');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  goBack(): void {
+    this.router.navigate(['/home']);
+  }
+
+  scrollTo(store): void {
+    if (store == 'target') {
+      this.targetDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    } else if (store == 'walmart') {
+      this.walmartDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    }
+  }
 }

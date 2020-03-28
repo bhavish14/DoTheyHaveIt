@@ -1,14 +1,14 @@
 .container-box {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* height: 100vh; */
   align-items: center;
 }
 
 .header {
   font-size: 32px;
   font-family: 'Permanent Marker', cursive;
-  margin-top: 50px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
 }
@@ -105,6 +105,8 @@
   background: #6183e3;
   border: 0 solid silver;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
 }
 
 .action-row img {
@@ -215,7 +217,7 @@
   .query-block {
     width: 80vw;
     max-width: 600px;
-    height: 400px;
+    height: 200px;
   }
 
   .query-block .mat-card {

@@ -32,7 +32,6 @@ export class HomepageComponentComponent implements OnInit {
 
   ngOnInit(): void {
     let allLocalStorageItems = { ...localStorage };
-    console.log(allLocalStorageItems);
 
     for (let item in allLocalStorageItems) {
       if (item.startsWith('recent_search')) {
@@ -106,7 +105,6 @@ export class HomepageComponentComponent implements OnInit {
             });
         },
         err => {
-          console.log(err);
           this.showPostalCode = true;
           reject(0);
           console.log('failed to capture postal code');

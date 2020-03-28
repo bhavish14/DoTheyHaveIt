@@ -1,10 +1,12 @@
 <div class="container">
   <div class="header">
     <div class="header-image">
-      <img src="/assets/images/target-corp.png" />
-      <span class="header-text">Target</span>
+      <img src="/assets/images/walmart-corp.png" />
+      <span class="header-text">Walmart</span>
     </div>
-
+    <div class="header-warning">
+      Note: Inventory may be inaccurate due to increased demand.
+    </div>
   </div>
   <div class="content" *ngIf="loaded && allProducts.length > 0">
     <div class="page-navigation">
@@ -21,20 +23,20 @@
         <mat-card>
           <mat-card-content>
             <div class="image">
-              <img src="{{ product.image_url }}" />
+              <img src="{{ product.image }}" />
             </div>
             <div class="product-details">
               <span class="title">
-                {{ product.title }}
+                {{ product.name }}
               </span>
               <div class="row">
-                <span class="price">
+                <!-- <span class="price">
                   <mat-icon>attach_money</mat-icon>
                   {{ product.price }}
-                </span>
-                <span class="view-item">
+                </span> -->
+                <!-- <span class="view-item">
                   <a target="_blank" href="{{ product.url }}">view item</a>
-                </span>
+                </span> -->
                 <span class="rating">
                   <mat-icon [ngClass]="{
                       gold: product.rating > 4,
@@ -51,20 +53,22 @@
               <div class="out-of-stock" *ngIf="product.out_of_stock">
                 uh-oh! product out of stock at this location
               </div>
-              <div class="store" *ngFor="let store of product.locations; let j = index">
-                <div>
-                  <div class="row">
-                    <span class="store-distance">
-                      <mat-icon>location_on</mat-icon>
-                      {{ store.distance | number }}{{ ' mi' }}
-                    </span>
-                    <span class="store-name">{{ store.store_name }}</span>
-                    <span class="store-timings">
-                      {{ store.begin_time + ' - ' + store.end_time }}
-                    </span>
+              <div *ngIf="!product.out_of_stock">
+                <div class="store" *ngFor="let store of product.locations; let j = index">
+                  <div>
+                    <div class="row">
+                      <span class="store-distance">
+                        <mat-icon>location_on</mat-icon>
+                        {{ store.store.distance | number }}{{ ' mi' }}
+                      </span>
+                      <span class="store-name">{{ store.store.displayName }}</span>
+                      <!-- <span class="store-timings">
+                        {{ store.store.operationalHours.todayHrs.startHr + ' am - ' + store.store.operationalHours.todayHrs.endHr + ' pm'}}
+                      </span> -->
+                    </div>
+                    <div class="store-stock">{{ store.inventory.quantity }} items in stock</div>
+                    <hr />
                   </div>
-                  <div class="store-stock">{{ store.stock }} items in stock</div>
-                  <hr />
                 </div>
               </div>
             </div>

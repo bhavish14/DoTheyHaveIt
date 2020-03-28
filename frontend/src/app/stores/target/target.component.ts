@@ -158,10 +158,6 @@ export class TargetComponent implements OnInit {
       });
   }
 
-  goBack(): void {
-    this.errorMsg = null;
-    this.router.navigate(['/home']);
-  }
 
   navigatePage(page): void {
     this.onPage = [0, 0, 0, 0];

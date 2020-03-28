@@ -43,7 +43,11 @@ const TargetController = () => {
    */
   const getProductStock = async (req, res) => {
     try {
-      let { tcin, postal_code, mile_range } = req.body;
+      let {
+        tcin,
+        postal_code,
+        mile_range
+      } = req.body;
 
       let options = {
         uri: `https://api.target.com/fulfillment_aggregator/v1/fiats/${tcin}?key=${

@@ -17,6 +17,8 @@ import { HomepageComponentComponent } from 'src/app/homepage-component/homepage-
 import { SidebarComponentComponent } from 'src/app/sidebar-component/sidebar-component.component';
 import { ProductListingComponentComponent } from 'src/app/product-listing-component/product-listing-component.component';
 import { TargetComponent } from 'src/app/stores/target/target.component';
+import { NavbarComponentComponent } from './navbar-component/navbar-component.component';
+import { WalmartComponent } from './stores/walmart/walmart.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomepageComponentComponent },
@@ -32,6 +34,8 @@ const appRoutes: Routes = [
     SidebarComponentComponent,
     ProductListingComponentComponent,
     TargetComponent,
+    NavbarComponentComponent,
+    WalmartComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,4 +53,4 @@ const appRoutes: Routes = [
   providers: [CookieService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

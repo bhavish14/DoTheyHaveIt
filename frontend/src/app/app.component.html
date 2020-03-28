@@ -2,7 +2,8 @@
   <div class="left-pane" *ngIf="!mobileQuery.matches">
     <app-sidebar-component></app-sidebar-component>
   </div>
-  <div [ngClass]="{ 'right-pane': !mobileQuery.matches }">
+  <div [ngClass]="{ 'right-pane': !mobileQuery.matches, 'full-width': mobileQuery.matches }">
+    <app-navbar-component *ngIf="mobileQuery.matches"></app-navbar-component>
     <div *ngIf="router.url.startsWith('/home')">
       <app-homepage-component></app-homepage-component>
     </div>
