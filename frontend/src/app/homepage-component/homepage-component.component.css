@@ -17,10 +17,11 @@
   width: 800px;
   margin-top: 50px;
   font-size: 18px;
+  margin-bottom: 100px;
 }
 
 .query-block {
-  margin-top: 100px;
+  /* margin-top: 100px; */
   width: 700px;
   justify-content: center;
   display: flex;
@@ -208,11 +209,13 @@
     width: 80vw;
     max-width: 600px;
     font-size: 16px;
+    margin-bottom: 40px;
   }
 
   .query-block {
     width: 80vw;
     max-width: 600px;
+    height: 400px;
   }
 
   .query-block .mat-card {
@@ -276,7 +279,7 @@
   }
 
   .postal-code-form {
-    margin-top: 20px !important;
+    margin-top: 40px !important;
     flex-direction: column;
     align-items: center;
   }
