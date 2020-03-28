@@ -16,64 +16,78 @@
     </mat-card>
   </div>
   <div class="content" *ngIf="loaded">
-    <div *ngFor="let product of allProducts; let i = index">
-      <mat-card>
-        <mat-card-content>
-          <div class="image">
-            <img src="{{ product.image_url }}" />
-          </div>
-          <div class="product-details">
-            <span class="title">
-              {{ product.title }}
-            </span>
-            <div class="row">
-              <span class="price">
-                <mat-icon>attach_money</mat-icon>
-                {{ product.price }}
-              </span>
-              <span class="view-item">
-                <a target="_blank" href="{{ product.url }}">view item</a>
-              </span>
-              <span class="rating">
-                <mat-icon
-                  [ngClass]="{
-                    gold: product.rating > 4,
-                    red: product.rating < 2
-                  }"
-                  >grade</mat-icon
-                >
-                {{ product.rating }}
-              </span>
+    <div class="page-navigation">
+      <span class="text">
+        Pages
+      </span>
+      <mat-card [ngClass]="{'grayed-out': onPage[x] == 1}" *ngFor="let idx of allProducts; let x = index;"
+        (click)="navigatePage(x)">
+        {{x + 1}}
+      </mat-card>
+    </div>
+    <div class="products">
+      <div *ngFor="let product of allProducts[page]; let i = index">
+        <mat-card>
+          <mat-card-content>
+            <div class="image">
+              <img src="{{ product.image_url }}" />
             </div>
-          </div>
-          <div class="locations">
-            <div class="header">
-              Stores near you
-            </div>
-            <div class="out-of-stock" *ngIf="product.out_of_stock">
-              uh-oh! product out of stock at this location
-            </div>
-            <div
-              class="store"
-              *ngFor="let store of product.locations; let j = index"
-            >
-              <div>
-                <div class="row">
-                  <span class="store-distance">
-                    <mat-icon>location_on</mat-icon>
-                    {{ store.distance | number }}{{ ' mi' }}
-                  </span>
-                  <span class="store-name">{{ store.store_name }}</span>
-                  <span class="store-timings">
-                    {{ store.begin_time + ' - ' + store.end_time }}
-                  </span>
-                </div>
-                <div class="store-stock">{{ store.stock }} items in stock</div>
-                <hr />
+            <div class="product-details">
+              <span class="title">
+                {{ product.title }}
+              </span>
+              <div class="row">
+                <span class="price">
+                  <mat-icon>attach_money</mat-icon>
+                  {{ product.price }}
+                </span>
+                <span class="view-item">
+                  <a target="_blank" href="{{ product.url }}">view item</a>
+                </span>
+                <span class="rating">
+                  <mat-icon [ngClass]="{
+                      gold: product.rating > 4,
+                      red: product.rating < 2
+                    }">grade</mat-icon>
+                  {{ product.rating }}
+                </span>
               </div>
             </div>
-          </div>
-        </mat-card-content>
+            <div class="locations">
+              <div class="header">
+                Stores near you
+              </div>
+              <div class="out-of-stock" *ngIf="product.out_of_stock">
+                uh-oh! product out of stock at this location
+              </div>
+              <div class="store" *ngFor="let store of product.locations; let j = index">
+                <div>
+                  <div class="row">
+                    <span class="store-distance">
+                      <mat-icon>location_on</mat-icon>
+                      {{ store.distance | number }}{{ ' mi' }}
+                    </span>
+                    <span class="store-name">{{ store.store_name }}</span>
+                    <span class="store-timings">
+                      {{ store.begin_time + ' - ' + store.end_time }}
+                    </span>
+                  </div>
+                  <div class="store-stock">{{ store.stock }} items in stock</div>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div class="page-navigation">
+      <span class="text">
+        Pages
+      </span>
+      <mat-card [ngClass]="{'grayed-out': onPage[x] == 1}" *ngFor="let idx of allProducts; let x = index;"
+        (click)="navigatePage(x)">
+        {{x + 1}}
       </mat-card>
     </div>
   </div>

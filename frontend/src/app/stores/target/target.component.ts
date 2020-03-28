@@ -18,10 +18,13 @@ export class TargetComponent implements OnInit {
   allProducts: Object[] = [];
   loaded: boolean = false;
   errorMsg: string = null;
-
-  constructor(private targetService: TargetService, private router: Router) {}
+  page: number = 0;
+  totalPages: number = 0;
+  onPage: number[] = [1, 0, 0, 0];
+  constructor(private targetService: TargetService, private router: Router) { }
 
   ngOnInit(): void {
+
     this.targetService
       .getStores(this.postalCode, this.mileRange)
       .pipe()
@@ -120,21 +123,33 @@ export class TargetComponent implements OnInit {
                           }
                           return store;
                         });
-                        productObject.locations = productObject.locations.slice(
-                          0,
-                          3,
-                        );
+                        productObject.locations = productObject.locations.slice(0, 3);
+
                         this.allProducts.push(productObject);
                         this.loaded = true;
                       }
                       return e;
                     });
+
+                    let testArray = [
+                      this.allProducts.slice(0, 6),
+                      this.allProducts.slice(6, 12),
+                      this.allProducts.slice(12, 18),
+                      this.allProducts.slice(18, 24),
+                      // this.allProducts.slice(20, 24),
+                    ];
+
+                    testArray = testArray.filter(e => e.length > 0);
+                    this.allProducts = testArray;
+                    this.totalPages = testArray.length;
                   });
                 } else {
                   this.errorMsg = 'Uh-oh! No products found';
                 }
               },
-              err => {},
+              err => {
+                this.errorMsg = 'Uh-oh! No products found';
+              },
             );
         } else {
           console.log('no stores found nearby');
@@ -146,5 +161,11 @@ export class TargetComponent implements OnInit {
   goBack(): void {
     this.errorMsg = null;
     this.router.navigate(['/home']);
+  }
+
+  navigatePage(page): void {
+    this.onPage = [0, 0, 0, 0];
+    this.page = page;
+    this.onPage[page] = 1;
   }
 }

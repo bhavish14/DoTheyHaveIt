@@ -61,6 +61,7 @@
 .miles-block .mat-form-field {
   width: 75px;
 }
+
 .miles-block .mat-form-field input {
   width: 100%;
   height: 15px;
@@ -85,6 +86,7 @@
 .postal-code-block .mat-form-field {
   width: 100px;
 }
+
 .postal-code-block .mat-form-field input {
   width: 100%;
   height: 15px;
@@ -110,7 +112,6 @@
 }
 
 .additional-info-block {
-  width: 1000px;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -158,6 +159,7 @@
 .card-b .content {
   margin: 5px 15px;
 }
+
 .additional-info-block img {
   width: 50px;
 }
@@ -174,17 +176,40 @@
   background: #5c9b9d;
 }
 
+.postal-code-form {
+  margin-top: 20px !important;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.postal-code-form .text {
+  font-size: 12px;
+}
+
+.loading-gif {
+  display: flex;
+  justify-content: center;
+}
+
+.loading-gif img {
+  height: 40px;
+  width: 40px;
+}
+
 @media only screen and (max-width: 800px) {
   .header {
     width: 80vw;
     max-width: 600px;
     font-size: 22px;
   }
+
   .text-block {
     width: 80vw;
     max-width: 600px;
     font-size: 16px;
   }
+
   .query-block {
     width: 80vw;
     max-width: 600px;
@@ -210,9 +235,10 @@
     margin: 0px;
     max-width: 150px;
   }
+
   .miles-block .mat-form-field {
     width: 20vw;
-    max-width: 75px;
+    max-width: 40px;
   }
 
   .postal-code-block {
@@ -247,5 +273,25 @@
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+
+  .postal-code-form {
+    margin-top: 20px !important;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .postal-code-form .text {
+    font-size: 12px;
+  }
+
+  .loading-gif {
+    display: flex;
+    justify-content: center;
+  }
+
+  .loading-gif img {
+    height: 40px;
+    width: 40px;
   }
 }

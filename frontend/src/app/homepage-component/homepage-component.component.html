@@ -9,8 +9,7 @@
       Gone are the days of having to go to multiple stores only to realize the
       last jar of peanut butter is gone! It ends right now. With
       <span style="font-family: 'Permanent Marker', cursive;">
-        "do they have it” </span
-      >, you can search across target
+        "do they have it” </span>, you can search across target
     </span>
     <span style="text-decoration: line-through;">
       , walmart, sams, cvs and walgreens.
@@ -22,58 +21,39 @@
     <form [formGroup]="searchForm">
       <div class="row">
         <mat-form-field>
-          <input
-            matInput
-            #query
-            placeholder="Search"
-            formControlName="searchQuery"
-          />
-          <mat-hint align="start"
-            ><strong>Peanut butter, anyone?</strong>
+          <input matInput #query placeholder="Search" formControlName="searchQuery" />
+          <mat-hint align="start"><strong>Peanut butter, anyone?</strong>
           </mat-hint>
         </mat-form-field>
         <div class="action-row">
-          <button
-            (click)="submit()"
-            *ngIf="!showPostalCode"
-            [disabled]="disable || searchForm.invalid"
-          >
+          <button (click)="submit()" *ngIf="!showPostalCode" [disabled]="disable || searchForm.invalid">
             <img src="/assets/images/search-icon.png" />
           </button>
-          <button
-            (click)="postalCodeSubmit()"
-            *ngIf="showPostalCode"
-            [disabled]="postalCodeForm.invalid"
-          >
+          <button (click)="postalCodeSubmit()" *ngIf="showPostalCode" [disabled]="postalCodeForm.invalid">
             <img src="/assets/images/search-icon.png" />
           </button>
         </div>
       </div>
     </form>
-    <form [formGroup]="postalCodeForm" class="row" *ngIf="showPostalCode">
-      <div class="miles-block">
-        <span>within</span>
-        <mat-form-field>
-          <input
-            matInput
-            #query
-            placeholder="distance"
-            formControlName="mileRange"
-          />
-        </mat-form-field>
-        <span>miles</span>
-      </div>
-      <div class="postal-code-block">
-        <span>of</span>
-        <mat-form-field>
-          <input
-            matInput
-            #query
-            placeholder="postal code"
-            formControlName="postalCode"
-            maxlength="5"
-          />
-        </mat-form-field>
+    <div class="loading-gif" *ngIf="loadingGif">
+      <img src="/assets/gifs/loading.gif" />
+    </div>
+    <form [formGroup]="postalCodeForm" class="row" *ngIf="showPostalCode" class="postal-code-form">
+        <div class="miles-block">
+          <span>within</span>
+          <mat-form-field>
+            <input matInput #query placeholder="distance" formControlName="mileRange" />
+          </mat-form-field>
+          <span>miles</span>
+        </div>
+        <div class="postal-code-block">
+          <span>of</span>
+          <mat-form-field>
+            <input matInput #query placeholder="postal code" formControlName="postalCode" maxlength="5" />
+          </mat-form-field>
+        </div>
+      <div class="text">
+        Yikes! Failed to load your postal code
       </div>
     </form>
   </div>

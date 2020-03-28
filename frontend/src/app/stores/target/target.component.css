@@ -15,6 +15,7 @@
 .header-image {
   margin-left: 20px;
 }
+
 .header-image img {
   height: 50px;
   width: 50px;
@@ -61,7 +62,6 @@
 
 .content .mat-card {
   width: 300px;
-  min-height: 250px;
   margin: 10px;
 }
 
@@ -149,6 +149,7 @@
   background: #b34744;
   justify-content: center;
 }
+
 .store .row {
   display: flex;
   flex-direction: row;
@@ -193,6 +194,42 @@
   background: #5c9b9d;
 }
 
+.products {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.page-navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.page-navigation .mat-card {
+  padding: 5px;
+  height: 25px;
+  width: 25px;
+  font-size: 12px;
+  text-align: center;
+  border-radius: 0;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.page-navigation .text {
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.grayed-out {
+  /* background-color: #8d8a8a; */
+  background-color: #a1a1a1;
+  cursor: default !important;
+  box-shadow: none;
+}
+
 @media only screen and (max-width: 640px) {
   .container {
     margin: 0px;
@@ -201,11 +238,12 @@
   .header {
     margin-top: 10px;
   }
+
   .header-image {
     margin-left: 0px;
   }
 }
-@media only screen and (max-width: 1007px) {
-}
-@media only screen and (min-width: 1008px) {
-}
+
+@media only screen and (max-width: 1007px) {}
+
+@media only screen and (min-width: 1008px) {}

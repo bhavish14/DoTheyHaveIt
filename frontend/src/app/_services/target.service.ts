@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class TargetService {
-  constructor(private http: HttpClient, private cookie: CookieService) {}
+  constructor(private http: HttpClient, private cookie: CookieService) { }
 
   getAPIKey(): void {
     this.http

@@ -19,6 +19,7 @@ export class HomepageComponentComponent implements OnInit {
   postalCode: number = null;
   showPostalCode: boolean = false;
   disable: boolean = false;
+  loadingGif: boolean = false;
 
   private gcsAPI: string = null;
   constructor(
@@ -27,9 +28,23 @@ export class HomepageComponentComponent implements OnInit {
     private targetService: TargetService,
     private http: HttpClient,
     private utilService: UtilService,
-  ) {}
+  ) { }
 
   ngOnInit(): void {
+    let allLocalStorageItems = { ...localStorage };
+    console.log(allLocalStorageItems);
+
+    for (let item in allLocalStorageItems) {
+      if (item.startsWith('recent_search')) {
+        let val = localStorage.getItem(item).split(';');
+        let dayMinusOne = new Date();
+        dayMinusOne = new Date(dayMinusOne.setHours(dayMinusOne.getHours() - 6));
+        if (new Date(Number(val[1])) < dayMinusOne) {
+          localStorage.removeItem(item);
+        }
+      }
+    }
+
     this.searchForm = this.formBuilder.group({
       searchQuery: [null, Validators.required],
     });
@@ -54,7 +69,6 @@ export class HomepageComponentComponent implements OnInit {
 
     // setting local storage
     let recentIdx = Number(localStorage.getItem('search_idx')) || 0;
-
     localStorage.setItem(
       `recent_search_${recentIdx}`,
       `${searchQuery};${Date.now()}`,
@@ -67,6 +81,8 @@ export class HomepageComponentComponent implements OnInit {
       enableHighAccuracy: true,
       timeout: 5000,
     };
+
+    this.loadingGif = true;
 
     let postalCodePromise = new Promise((resolve, reject) => {
       navigator.geolocation.getCurrentPosition(
@@ -90,9 +106,11 @@ export class HomepageComponentComponent implements OnInit {
             });
         },
         err => {
+          console.log(err);
           this.showPostalCode = true;
           reject(0);
           console.log('failed to capture postal code');
+          this.loadingGif = false;
         },
         options,
       );
@@ -100,7 +118,7 @@ export class HomepageComponentComponent implements OnInit {
 
     postalCodePromise.then(res => {
       this.disable = false;
-      console.log(res);
+      this.loadingGif = false;
       this.router.navigate(['/search'], {
         queryParams: {
           query: searchQuery,
