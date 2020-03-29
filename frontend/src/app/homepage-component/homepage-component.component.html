@@ -26,34 +26,25 @@
           </mat-hint>
         </mat-form-field>
         <div class="action-row">
-          <button (click)="submit()" *ngIf="!showPostalCode" [disabled]="disable || searchForm.invalid">
-            <img src="/assets/images/search.png" />
-          </button>
-          <button (click)="postalCodeSubmit()" *ngIf="showPostalCode" [disabled]="postalCodeForm.invalid">
+          <button (click)="submit()" [disabled]="disable || searchForm.invalid">
             <img src="/assets/images/search.png" />
           </button>
         </div>
       </div>
-    </form>
-    <div class="loading-gif" *ngIf="loadingGif">
-      <img src="/assets/gifs/loading.gif" />
-    </div>
-    <form [formGroup]="postalCodeForm" class="row" *ngIf="showPostalCode" class="postal-code-form">
-      <div class="miles-block">
-        <span>within</span>
-        <mat-form-field>
-          <input matInput #query placeholder="distance" formControlName="mileRange" />
-        </mat-form-field>
-        <span>miles</span>
-      </div>
-      <div class="postal-code-block">
-        <span>of</span>
-        <mat-form-field>
-          <input matInput #query placeholder="postal code" formControlName="postalCode" maxlength="5" />
-        </mat-form-field>
-      </div>
-      <div class="text">
-        Yikes! Failed to load your postal code
+      <div class="row">
+        <div class="miles-block">
+          <span>within</span>
+          <mat-form-field>
+            <input matInput #query placeholder="distance" formControlName="mileRange" />
+          </mat-form-field>
+          <span>miles</span>
+        </div>
+        <div class="postal-code-block">
+          <span>of</span>
+          <mat-form-field>
+            <input matInput #query placeholder="postal code" formControlName="postalCode" maxlength="5" />
+          </mat-form-field>
+        </div>
       </div>
     </form>
   </div>

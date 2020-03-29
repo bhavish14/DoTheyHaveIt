@@ -43,6 +43,10 @@
   align-items: baseline;
 }
 
+.mat-form-field {
+  margin-right: 10px;
+}
+
 .query-block .mat-form-field {
   width: 400px;
 }
@@ -56,12 +60,12 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 150px;
-  margin: 0px 10px;
+  /* width: 150px;
+  margin: 0px 10px; */
 }
 
 .miles-block .mat-form-field {
-  width: 75px;
+  width: 50px;
 }
 
 .miles-block .mat-form-field input {
@@ -70,15 +74,15 @@
 }
 
 .miles-block span {
-  margin: 0px 10px;
+  margin-right: 10px;
 }
 
 .postal-code-block {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  width: 150px;
-  margin: 0px 25px;
+  /* width: 150px;
+  margin: 0px 25px; */
 }
 
 .postal-code-block span {
@@ -86,7 +90,7 @@
 }
 
 .postal-code-block .mat-form-field {
-  width: 100px;
+  width: 75px;
 }
 
 .postal-code-block .mat-form-field input {
@@ -276,8 +280,8 @@
   }
 
   .query-block .row {
-    margin: 1 !important;
-    width: 75vw;
+    /* margin: 1 !important;
+    width: 75vw; */
   }
 
   .query-block .mat-form-field {
@@ -286,9 +290,9 @@
   }
 
   .miles-block {
-    width: 40vw;
+    /* width: 40vw;
     margin: 0px;
-    max-width: 150px;
+    max-width: 150px; */
   }
 
   .miles-block .mat-form-field {
@@ -297,9 +301,9 @@
   }
 
   .postal-code-block {
-    width: 40vw;
+    /* width: 40vw;
     max-width: 150px;
-    margin-left: 40px;
+    margin-left: 40px; */
   }
 
   .postal-code-block .mat-form-field {
@@ -327,17 +331,12 @@
   form {
     width: 100%;
     display: flex;
-    justify-content: center;
-  }
-
-  .postal-code-form {
-    margin-top: 40px !important;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
   }
 
-  .postal-code-form .text {
-    font-size: 12px;
+  .miles-block {
+    /* width: 50px; */
   }
 
   .loading-gif {

@@ -131,6 +131,10 @@ export class TargetComponent implements OnInit {
                       return e;
                     });
 
+                    this.allProducts.sort((a: any, b: any) => {
+                      return a.out_of_stock - b.out_of_stock;
+                    });
+
                     let testArray = [
                       this.allProducts.slice(0, 6),
                       this.allProducts.slice(6, 12),
