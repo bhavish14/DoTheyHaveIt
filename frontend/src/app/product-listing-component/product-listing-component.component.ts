@@ -18,11 +18,16 @@ export class ProductListingComponentComponent implements OnInit {
   postalCode: number = null;
   searchQuery: string = null;
   allProducts: Object[] = [];
+  funText: String[] = [
+    'Hey you! Please don\'t be that guy we all read about in math textbooks. No! No one can possibly eat 50 dozens of bananas',
+    'Don\'t buy all the soap; other people have to wash their hands to prevent spreading it too, ya know?',
+  ];
+  interval: any = null;
+  selectedTextIdx: number = 0;
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private targetservice: TargetService,
   ) {
     this.mileRange = Number(
       this.route.snapshot.queryParamMap.get('mile_range'),
@@ -35,10 +40,18 @@ export class ProductListingComponentComponent implements OnInit {
     this.searchQuery = this.route.snapshot.queryParamMap.get('query');
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.interval = setInterval(() => {
+      this.selectedTextIdx = this.selectedTextIdx + 1;
+      if (this.selectedTextIdx >= this.funText.length) {
+        this.selectedTextIdx = 0;
+      }
+    }, 10000);
+  }
 
   goBack(): void {
     this.router.navigate(['/home']);
+    clearInterval(this.interval);
   }
 
   scrollTo(store): void {

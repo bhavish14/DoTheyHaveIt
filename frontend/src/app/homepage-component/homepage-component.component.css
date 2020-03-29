@@ -3,6 +3,7 @@
   flex-direction: column;
   /* height: 100vh; */
   align-items: center;
+  margin-bottom: 40px;
 }
 
 .header {
@@ -100,18 +101,18 @@
 .action-row button {
   width: 40px;
   height: 40px;
-  border-radius: 100px;
+  border-radius: 50%;
   color: #fff;
   background: #6183e3;
-  border: 0 solid silver;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 3px 5px 0px #1f1e1e40;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .action-row img {
-  height: 20px;
   width: 20px;
+  height: auto;
 }
 
 .additional-info-block {
@@ -147,7 +148,7 @@
   display: flex;
   flex-direction: row;
   border-radius: 25px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0px #0f0f0f33;
 }
 
 .card-b {
@@ -168,11 +169,11 @@
 }
 
 .color-1 {
-  background-color: #645186;
+  background-color: #4b7bb2;
 }
 
 .color-2 {
-  background: #de8171;
+  background: #c24f1b;
 }
 
 .color-3 {
@@ -198,6 +199,54 @@
 .loading-gif img {
   height: 40px;
   width: 40px;
+}
+
+.covid-awarness-block {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.covid-awarness-block .header {
+  font-size: 24px;
+}
+
+.covid-awarness-block .article {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.article a {
+  background: #c24f1b;
+  padding: 5px 5px;
+  color: #d6e5e5;
+}
+
+.covid-awarness-block span {
+  text-align: center;
+}
+
+.spread-the-word {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.spread-the-word .header {
+  font-size: 24px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: row;
+}
+
+.social-links img {
+  width: 40px;
+  height: auto;
+  margin: 5px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -298,5 +347,22 @@
   .loading-gif img {
     height: 40px;
     width: 40px;
+  }
+
+  .covid-awarness-block .article {
+    width: 80vw;
+  }
+
+  .covid-awarness-block .header {
+    font-size: 20px;
+  }
+
+  .spread-the-word .header {
+    font-size: 20px;
+  }
+
+  .spread-the-word img {
+    width: 30px;
+    height: auto;
   }
 }
