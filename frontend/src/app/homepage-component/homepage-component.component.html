@@ -27,10 +27,10 @@
         </mat-form-field>
         <div class="action-row">
           <button (click)="submit()" *ngIf="!showPostalCode" [disabled]="disable || searchForm.invalid">
-            <img src="/assets/images/search-icon.png" />
+            <img src="/assets/images/search.png" />
           </button>
           <button (click)="postalCodeSubmit()" *ngIf="showPostalCode" [disabled]="postalCodeForm.invalid">
-            <img src="/assets/images/search-icon.png" />
+            <img src="/assets/images/search.png" />
           </button>
         </div>
       </div>

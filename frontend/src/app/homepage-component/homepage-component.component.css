@@ -108,6 +108,7 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
+  border: 1px solid #6183e3;
 }
 
 .action-row img {
