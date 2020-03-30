@@ -63,7 +63,15 @@
                       {{ store.begin_time + ' - ' + store.end_time }}
                     </span>
                   </div>
-                  <div class="store-stock">{{ store.stock }} items in stock</div>
+                  <div class="row">
+                    <div class="add-to-list" (click)="addToList(product, store)">
+                      <mat-icon>add</mat-icon>
+                      <span>
+                        add to list
+                      </span>
+                    </div>
+                    <div class="store-stock">{{ store.stock }} items in stock</div>
+                  </div>
                   <hr />
                 </div>
               </div>

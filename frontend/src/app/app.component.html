@@ -10,5 +10,8 @@
     <div *ngIf="router.url.startsWith('/search')">
       <app-product-listing-component></app-product-listing-component>
     </div>
+    <div *ngIf="router.url.startsWith('/my-list')">
+      <app-my-list-component></app-my-list-component>
+    </div>
   </div>
 </div>

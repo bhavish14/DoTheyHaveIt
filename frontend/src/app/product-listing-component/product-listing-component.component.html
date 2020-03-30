@@ -1,6 +1,14 @@
 <div class="container">
   <div class="header">
     <div class="header-text">{{ searchQuery | titlecase }}</div>
+    <div class="my-list-block" (click)="openMyList()">
+      <mat-icon>
+        format_list_bulleted
+      </mat-icon>
+      <span>
+        view my List
+      </span>
+    </div>
     <div class="back-btn-block" (click)="goBack()">
       <mat-icon>reply</mat-icon>
       go back

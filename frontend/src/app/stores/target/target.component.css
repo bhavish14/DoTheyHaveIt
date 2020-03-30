@@ -228,6 +228,15 @@
   box-shadow: none;
 }
 
+
+.add-to-list {
+  cursor: pointer;
+  align-items: center;
+  display: flex;
+  color: #007bff;
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 640px) {
   .container {
     margin: 0px;

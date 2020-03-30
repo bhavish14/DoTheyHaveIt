@@ -5,6 +5,8 @@ import { catchError } from 'rxjs/operators';
 
 // services
 import { TargetService } from 'src/app/_services/target.service';
+import { ListsService } from 'src/app/_services/lists.service';
+
 @Component({
   selector: 'app-target',
   templateUrl: './target.component.html',
@@ -21,7 +23,10 @@ export class TargetComponent implements OnInit {
   page: number = 0;
   totalPages: number = 0;
   onPage: number[] = [1, 0, 0, 0];
-  constructor(private targetService: TargetService, private router: Router) { }
+  constructor(
+    private targetService: TargetService,
+    private router: Router,
+    private listsService: ListsService) { }
 
   ngOnInit(): void {
 
@@ -109,16 +114,14 @@ export class TargetComponent implements OnInit {
                           ) {
                             productObject.out_of_stock = false;
                             productObject.locations.push({
+                              store_id: store.location_id,
                               distance: store.distance,
                               store_address: store.store_address,
                               store_name: store.store_name,
                               stock:
                                 store.location_available_to_promise_quantity,
-                              begin_time: thisStore[0]?.begin_time.substring(
-                                0,
-                                2,
-                              ),
-                              end_time: thisStore[0]?.end_time.substring(0, 2),
+                              begin_time: `${thisStore[0]?.begin_time.substring(0, 2)}`,
+                              end_time: `${thisStore[0]?.end_time.substring(0, 2)}`,
                             });
                           }
                           return store;
@@ -162,10 +165,15 @@ export class TargetComponent implements OnInit {
       });
   }
 
-
   navigatePage(page): void {
     this.onPage = [0, 0, 0, 0];
     this.page = page;
     this.onPage[page] = 1;
+  }
+
+  addToList(product: any, store: any): void {
+    store.store_id = `target-${store.store_id}`;
+    this.listsService.addToList(product, store);
+
   }
 }

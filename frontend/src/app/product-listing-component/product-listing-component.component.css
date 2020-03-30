@@ -11,7 +11,24 @@
 
 .header-text {
   margin-left: 20px;
+  margin-right: 10px;
   font-size: 24px;
+}
+
+.my-list-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #5c9b9d
+}
+
+.my-list-block .mat-icon {
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+  margin-right: 10px;
 }
 
 .back-btn-block {

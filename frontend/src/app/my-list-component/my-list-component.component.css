@@ -1,0 +1,172 @@
+.container {
+  margin-top: 10px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-text {
+  margin-left: 20px;
+  font-size: 24px;
+}
+
+.back-btn-block {
+  display: flex;
+  cursor: pointer;
+}
+
+.back-btn-block .mat-icon {
+  margin-right: 10px;
+}
+
+.empty-my-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #6183e3;
+  cursor: pointer;
+}
+
+.mat-icon {
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+  margin-right: 10px;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.mat-card {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.store-information {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.store-name {
+  width: 250px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.store-address {
+  width: 350px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.store-distance {
+  font-size: 14px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.store-timings {
+  font-size: 14px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  width: 400px;
+}
+
+.item {
+  padding: 10px;
+}
+
+.items .image {
+  width: 50px;
+  margin-right: 20px;
+}
+
+.items img {
+  width: 50px;
+  height: auto;
+}
+
+.items .title {
+  width: 200px;
+  margin-right: 20px;
+}
+
+.items .price {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.delete {
+  cursor: pointer;
+  font-size: 16px;
+  height: 16px;
+  width: 16px;
+}
+
+.no-items {
+  margin-top: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  .store-information {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mat-card {
+    margin: 0px 10px;
+  }
+
+  .content .mat-card {
+    width: 100vw;
+  }
+
+  .items .mat-card {
+    width: 90vw;
+  }
+
+  .store-distance {
+    font-size: 14px;
+  }
+
+  .store-timings {
+    font-size: 14px;
+  }
+}

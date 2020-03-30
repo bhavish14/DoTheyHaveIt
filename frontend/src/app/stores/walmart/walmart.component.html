@@ -66,7 +66,15 @@
                         {{ store.store.operationalHours.todayHrs.startHr + ' am - ' + store.store.operationalHours.todayHrs.endHr + ' pm'}}
                       </span> -->
                     </div>
-                    <div class="store-stock">{{ store.inventory.quantity }} items in stock</div>
+                    <div class="row">
+                      <div class="add-to-list" (click)="addToList(product, store)">
+                        <mat-icon>add</mat-icon>
+                        <span>
+                          add to list
+                        </span>
+                      </div>
+                      <div class="store-stock">{{ store.inventory.quantity }} items in stock</div>
+                    </div>
                     <hr />
                   </div>
                 </div>

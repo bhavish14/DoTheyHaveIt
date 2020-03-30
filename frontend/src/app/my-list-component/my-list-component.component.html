@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="header">
+    <div class="header-text">My List</div>
+    <div class="back-btn-block" (click)="goBack()">
+      <mat-icon>reply</mat-icon>
+      go back
+    </div>
+  </div>
+  <div class="empty-my-list" (click)="emptyList()" *ngIf="length > 0">
+    <mat-icon>delete</mat-icon>
+    <span>
+      empty my list
+    </span>
+  </div>
+
+  <div class="content">
+    <div *ngIf="length > 0">
+      <mat-card *ngFor="let store of myList | keyvalue" class="store">
+        <mat-card-content>
+          <div class="store-information">
+            <div class="store-name">
+              {{ store.value.store_name }}
+            </div>
+            <div class="store-address">
+              <mat-icon>home</mat-icon>
+              <span>{{ store.value.store_address}}</span>
+            </div>
+            <div class="store-distance">
+              <mat-icon>near_me</mat-icon>
+              <span>{{ store.value.store_distance }} mi</span>
+            </div>
+            <div class="store-timings">
+              <mat-icon>alarm</mat-icon>
+              <span>
+                {{ store.value.store_begin_time }} am to {{ store.value.store_end_time }} pm
+              </span>
+            </div>
+          </div>
+          <div class="items">
+            <mat-card class="item" *ngFor="let item of store.value.items">
+              <div class="image">
+                <img src="{{ item.image }}">
+              </div>
+              <div class="title">
+                {{ item.title }}
+              </div>
+              <div class="price">
+                <mat-icon>attach_money</mat-icon>
+                {{ item.price }}
+              </div>
+            </mat-card>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="no-items" *ngIf="length == 0">
+      No items in your list
+    </div>
+  </div>
+</div>

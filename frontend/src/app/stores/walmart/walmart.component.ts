@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 
 // service
-import { TargetService } from 'src/app/_services/target.service';
 import { WalmartService } from './../../_services/walmart.service';
+import { ListsService } from 'src/app/_services/lists.service';
 
 @Component({
   selector: 'app-walmart',
@@ -26,8 +26,8 @@ export class WalmartComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private targetService: TargetService,
     private walmartService: WalmartService,
+    private listsService: ListsService
   ) { }
 
   ngOnInit(): void {
@@ -144,4 +144,23 @@ export class WalmartComponent implements OnInit {
     this.onPage[page] = 1;
   }
 
+  addToList(product: any, store: any): void {
+    store = store.store;
+    product = {
+      title: product.name,
+      image_url: product.image,
+      price: 'unknown',
+    };
+
+    store = {
+      store_id: `walmart-${store.id}`,
+      store_address: `${store.address.address}, ${store.address.city}`,
+      distance: store.distance,
+      store_name: store.displayName,
+      begin_time: String(store.operationalHours.todayHrs.startHr).slice(0, 2),
+      end_time: String(store.operationalHours.todayHrs.endHr).slice(0, 2)
+    }
+
+    this.listsService.addToList(product, store);
+  }
 }

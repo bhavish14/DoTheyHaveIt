@@ -19,10 +19,12 @@ import { ProductListingComponentComponent } from 'src/app/product-listing-compon
 import { TargetComponent } from 'src/app/stores/target/target.component';
 import { NavbarComponentComponent } from './navbar-component/navbar-component.component';
 import { WalmartComponent } from './stores/walmart/walmart.component';
+import { MyListComponentComponent } from './my-list-component/my-list-component.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomepageComponentComponent },
   { path: 'search', component: ProductListingComponentComponent },
+  { path: 'my-list', component: MyListComponentComponent },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
     TargetComponent,
     NavbarComponentComponent,
     WalmartComponent,
+    MyListComponentComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-// services
-import { TargetService } from 'src/app/_services/target.service';
 
 @Component({
   selector: 'app-product-listing-component',
@@ -60,5 +58,9 @@ export class ProductListingComponentComponent implements OnInit {
     } else if (store == 'walmart') {
       this.walmartDiv.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     }
+  }
+
+  openMyList(): void {
+    this.router.navigate(['/my-list']);
   }
 }
